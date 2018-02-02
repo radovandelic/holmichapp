@@ -9,7 +9,7 @@ class Home extends React.Component {
 
         return (
             <div className='home content'>
-                <h1> {text("Cahit")[lang].GREETING}</h1>
+                <h1> {text('You')[lang].GREETING}</h1>
             </div>
         )
     }

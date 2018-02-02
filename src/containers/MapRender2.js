@@ -18,11 +18,11 @@ const originLng = null;
 const destinationLat = null;
 const destinationLng = null;
 
-//console.log(this.props)
+console.log(this.props.destinationLat)
 
 const Map = compose(
   withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyBLy-topXnbYtxON2uEI4CQTDkiWSljTdU&v=3.exp&libraries=geometry,drawing,places&language=${localization.language}&region=${localization.region}`,
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places&language=${localization.language}&region=${localization.region}`,
     loadingElement: <div className='map-layout' />,
     containerElement: <div className='map' />,
     mapElement: <div className='map-element' />,
@@ -31,7 +31,7 @@ const Map = compose(
   withGoogleMap,
   lifecycle({
     componentDidMount() {
-      //console.log(this.props)
+      console.log(this.props)
 
       const DirectionsService = new google.maps.DirectionsService();
 
@@ -52,7 +52,7 @@ const Map = compose(
       })
     },
     componentWillReceiveProps(newProps) {
-      //console.log(newProps)
+      console.log(newProps)
       const DirectionsService = new google.maps.DirectionsService();
 
       DirectionsService.route({

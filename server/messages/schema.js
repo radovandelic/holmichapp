@@ -23,6 +23,18 @@ var schema = {
         route: {
             type: String,
             required: false
+        },
+        originAddress: {
+            type: String,
+            required: false
+        },
+        destinationAddress: {
+            type: String,
+            required: false
+        },
+        accepted: {
+            type: Number,
+            required: false
         }
     }]
 }

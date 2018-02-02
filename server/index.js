@@ -3,7 +3,8 @@ var app = express();
 var userRoutes = require("./users");
 var messageRoutes = require("./messages");
 var compress = require("compression");
-var secret = require("./config/keys").sessionsecret;
+var path = require('path');
+//var secret = process.env.sessionsecret || require("./config/keys").sessionsecret;
 app.use(compress());
 
 // set up passport
@@ -22,12 +23,12 @@ passport.deserializeUser((id, done) => {
 }); */
 
 // set up session
-var session = require('express-session');
+/*var session = require('express-session');
 app.use(session({
     secret: secret,
     resave: true,
     saveUninitialized: false
-}));
+}));*/
 
 // set up body-parser
 var bodyParser = require("body-parser");
@@ -44,17 +45,22 @@ app.use(function (req, res, next) {
 var port = process.env.PORT || 3001;
 app.set('port', port);
 
-// set up a static server
-app.use(express.static("build"));
-
 app.use("/user/", userRoutes);
 app.use("/message/", messageRoutes);
 
+// set up a static server
+app.use(express.static("build"));
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+});
+
 // set up error middleware
-app.use(function (req, res) {
+/*app.use(function (req, res) {
     res.statusCode = 404;
     res.send("Page doesn't exist");
-});
+});*/
 
 // set up server
 app.listen(port, () => {
