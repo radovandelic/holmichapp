@@ -6,8 +6,9 @@
 # testing
 /coverage
 
-# production
-/build
+# keys
+/server/config/keys.js
+/server/config/connectionstring.js
 
 # misc
 .DS_Store
